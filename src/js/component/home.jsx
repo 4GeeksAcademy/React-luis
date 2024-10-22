@@ -1,26 +1,49 @@
 import React from "react";
+import Navb from "./Navb";
+import Jumbotron from "./Jumbotron";
+import Card from "./Card";
+import Footer from "./Footer";
+import { characters } from "../rawData";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
 
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+
+    return (
+        <>
+
+
+
+            <Navb marca={'Start bootstrap'} />
+
+            <div className="container justify-content-center">
+
+                <Jumbotron />
+                <div className="row" >
+                    {characters.map(character => (
+                        <div key={character.id} className="col-12 col-md-6 col-lg-3">
+                            <Card name={character.name}  srcImage={character.image} description="Some quick example text to build on the card title and make up the bulk of the card's content." />
+                        </div>
+                    ))
+                    }
+
+
+                    {/* <div className="col-12 col-md-6 col-lg-3">
+                        <Card name={characters[2].name} srcImage={characters[2].image} description="Some quick example text to build on the card title and make up the bulk of the card's content." />
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-3">
+                        <Card name={characters[4].name} srcImage={characters[4].image} description="Some quick example text to build on the card title and make up the bulk of the card's content." />
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-3">
+                        <Card name={characters[7].name} srcImage={characters[7].image} description="Some quick example text to build on the card title and make up the bulk of the card's content." />
+                    </div>*/}
+                </div>
+
+            </div>
+            <Footer />
+        </>
+    );
 };
 
 export default Home;
